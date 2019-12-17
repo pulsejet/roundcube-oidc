@@ -45,7 +45,7 @@ use Jumbojett\OpenIDConnectClient;
 
             // Get user information
             $oidc->authenticate();
-            $uid = $oidc->requestUserInfo('uid');
+            $uid = $oidc->requestUserInfo($RCMAIL->config->get('oidc_uid_field'));
 
 
             // Trigger auth hook
