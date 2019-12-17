@@ -19,7 +19,7 @@ $config['oidc_secret'] = 'round_secret';
 
 // -------------- User Fields -----------------
 // Field for login UID. This may be an email ID
-$config['oidc_field_uid'] = 'uid';
+$config['oidc_field_uid'] = 'mail';
 
 // Field for cleartext password
 $config['oidc_field_password'] = 'password';
