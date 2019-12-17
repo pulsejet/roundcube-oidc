@@ -22,7 +22,7 @@ use Jumbojett\OpenIDConnectClient;
 
         public function loginform($content) {
             // Add the login link
-            $content['content'] .= "<a href='?oidc=1'> Login with SSO </a>";
+            $content['content'] .= "<a href='?oidc=1'> Login with OIDC </a>";
 
             // Check if we are starting or resuming oidc auth
             if (!isset($_GET['code']) && !isset($_GET['oidc'])) {
@@ -48,7 +48,7 @@ use Jumbojett\OpenIDConnectClient;
                 $oidc->authenticate();
                 $user = json_decode(json_encode($oidc->requestUserInfo()), true);
             } catch (\Exception $e) {
-                $content['content'] .= "<br> SSO authentication failed!";
+                $content['content'] .= "<br> OIDC authentication failed!";
                 return $content;
             }
 
