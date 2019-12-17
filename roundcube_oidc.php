@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
 use Jumbojett\OpenIDConnectClient;
 
     /**
@@ -8,11 +7,11 @@ use Jumbojett\OpenIDConnectClient;
      * Login to roundcube with OpenID Connect provider
      *
      * @license	MIT License: <http://opensource.org/licenses/MIT>
-     * @version 1.0.0
+     * @version 1.0.1
      * @author Varun Patil
      * @category  Plugin for RoundCube WebMail
      */
-    class oidc extends rcube_plugin
+    class roundcube_oidc extends rcube_plugin
     {
         public $task = 'login|logout';
         private $map;
