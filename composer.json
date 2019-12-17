@@ -1,0 +1,17 @@
+{
+    "name": "radialapps/roundcube-oidc",
+    "type": "roundcube-plugin",
+    "description": "OpenID Connect 1.0 login plugin for roundcube",
+    "license": "MIT",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Varun Patil",
+            "email": "radialapps@gmail.com",
+            "role": "Lead"
+        }
+    ],
+    "require": {
+        "jumbojett/openid-connect-php": "^0.8.0"
+    }
+}
