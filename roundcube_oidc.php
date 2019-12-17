@@ -58,6 +58,12 @@ use Jumbojett\OpenIDConnectClient;
             $password = get($user[$RCMAIL->config->get('oidc_field_password')], $password);
             $imap_server = get($user[$RCMAIL->config->get('oidc_field_server')], $imap_server);
 
+            // Check if master user is present
+            $master = $RCMAIL->config->get('oidc_config_master_user');
+            if ($master != '') {
+                $uid .= $RCMAIL->config->get('oidc_master_user_separator') . $master;
+            }
+
             // Trigger auth hook
             $auth = $RCMAIL->plugins->exec_hook('authenticate', array(
                 'user' => $uid,

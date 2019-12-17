@@ -7,6 +7,15 @@ $config = array();
 // does not supply a cleartext password
 $config['oidc_imap_master_password'] = '';
 
+// Master user separator for Dovecot
+// https://doc.dovecot.org/configuration_manual/authentication/master_users/
+// https://docs.iredmail.org/dovecot.master.user.html
+$config['oidc_master_user_separator'] = '*';
+
+// Master user to append after separator
+// Set to blank to not use a master user
+$config['oidc_config_master_user'] = 'admin@iitb.ac.in';
+
 // --------------- Provider ------------------
 // URL for OIDC
 $config['oidc_url'] = 'https://testsso.iitb.ac.in';
