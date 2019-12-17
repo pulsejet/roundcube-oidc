@@ -11,7 +11,14 @@
             "role": "Lead"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://plugins.roundcube.net"
+        }
+    ],
     "require": {
+        "roundcube/plugin-installer": ">=0.1.6",
         "jumbojett/openid-connect-php": "^0.8.0"
     }
 }
