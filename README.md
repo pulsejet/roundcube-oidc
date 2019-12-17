@@ -6,6 +6,12 @@ This plugin allows you to authenticate users to roundcube using an OpenID Connec
 
 Check the `config.inc.php` for more details on configuration.
 
+## Installation
+To install, get the plugin with composer in your roundcube directory
+```
+composer require radialapps/roundcube-oidc
+```
+
 ## License
 Permissively licensed under the MIT license
 
