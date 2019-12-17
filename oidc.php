@@ -44,9 +44,18 @@ use Jumbojett\OpenIDConnectClient;
             );
 
             // Get user information
-            $oidc->authenticate();
-            $uid = $oidc->requestUserInfo($RCMAIL->config->get('oidc_uid_field'));
+            try {
+                $oidc->authenticate();
+                $user = json_decode(json_encode($oidc->requestUserInfo()), true);
+            } catch (\Exception $e) {
+                $content['content'] .= "<br> SSO authentication failed!";
+                return $content;
+            }
 
+            // Parse fields
+            $uid = $user[$RCMAIL->config->get('oidc_field_uid')];
+            $password = get($user[$RCMAIL->config->get('oidc_field_password')], $password);
+            $imap_server = get($user[$RCMAIL->config->get('oidc_field_server')], $imap_server);
 
             // Trigger auth hook
             $auth = $RCMAIL->plugins->exec_hook('authenticate', array(
@@ -73,5 +82,11 @@ use Jumbojett\OpenIDConnectClient;
             }
 
             return $content;
-        }  
+        }
+
     }
+
+    function get(&$var, $default=null) {
+        return isset($var) ? $var : $default;
+    }
+
