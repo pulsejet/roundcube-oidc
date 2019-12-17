@@ -16,13 +16,11 @@ use Jumbojett\OpenIDConnectClient;
         private $map;
     
         function init() {
+            $this->load_config();
             $this->add_hook('template_object_loginform', array($this, 'loginform'));
         }
 
         public function loginform($content) {
-            $password = '';
-            $imap_server = 'imap.iitb.ac.in';
-
             // Add the login link
             $content['content'] .= "<a href='?oidc=1'> Login with SSO </a>";
 
@@ -31,15 +29,24 @@ use Jumbojett\OpenIDConnectClient;
                 return $content;
             }
 
+            // Get mail object
+            $RCMAIL = rcmail::get_instance();
+
+            // Get master password and default imap server
+            $password = $RCMAIL->config->get('oidc_imap_master_password');
+            $imap_server = $RCMAIL->config->get('default_host');
+
             // Build provider
-            $oidc = new OpenIDConnectClient('https://testsso.iitb.ac.in', 'gkroundcube', 'round_secret');
+            $oidc = new OpenIDConnectClient(
+                $RCMAIL->config->get('oidc_url'),
+                $RCMAIL->config->get('oidc_client'),
+                $RCMAIL->config->get('oidc_secret')
+            );
 
             // Get user information
             $oidc->authenticate();
             $uid = $oidc->requestUserInfo('uid');
 
-            // Get mail object
-            $RCMAIL = rcmail::get_instance($GLOBALS['env']);
 
             // Trigger auth hook
             $auth = $RCMAIL->plugins->exec_hook('authenticate', array(
@@ -68,4 +75,3 @@ use Jumbojett\OpenIDConnectClient;
             return $content;
         }  
     }
-?>
