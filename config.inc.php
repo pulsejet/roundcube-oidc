@@ -14,7 +14,7 @@ $config['oidc_master_user_separator'] = '*';
 
 // Master user to append after separator
 // Set to blank to not use a master user
-$config['oidc_config_master_user'] = 'admin@iitb.ac.in';
+$config['oidc_config_master_user'] = '';
 
 // --------------- Provider ------------------
 // URL for OIDC
