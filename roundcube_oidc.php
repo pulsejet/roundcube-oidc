@@ -11,7 +11,6 @@ use Jumbojett\OpenIDConnectClient;
      * Login to roundcube with OpenID Connect provider
      *
      * @license	MIT License: <http://opensource.org/licenses/MIT>
-     * @version 1.1.0
      * @author Varun Patil
      * @category  Plugin for RoundCube WebMail
      */

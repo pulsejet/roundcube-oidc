@@ -8,7 +8,7 @@ This plugin allows you to authenticate users to roundcube using an OpenID Connec
 Check the `config.inc.php` for more details on configuration.
 
 ## SMTP
-Note that unless cleartext passwords are provided, SMTP must necessarily be configured use a master password
+Note that unless cleartext passwords are provided, SMTP must necessarily be configured use no authentication or a master password
 
 ## Installation
 To install, get the plugin with composer in your roundcube directory
