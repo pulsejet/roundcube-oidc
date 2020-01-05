@@ -16,6 +16,8 @@ To install, get the plugin with composer in your roundcube directory
 composer require radialapps/roundcube-oidc
 ```
 
+Alternatively, some releases may be available as zipped packages [here](https://github.com/pulsejet/roundcube-oidc/releases) at GitHub. You need to unzip the package in your plugins directory and activate the plugin in the configuration.
+
 ## License
 Permissively licensed under the MIT license
 
