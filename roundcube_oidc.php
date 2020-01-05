@@ -53,7 +53,7 @@ use Jumbojett\OpenIDConnectClient;
                 $oidc->authenticate();
                 $user = json_decode(json_encode($oidc->requestUserInfo()), true);
             } catch (\Exception $e) {
-                $content['content'] .= "<p> OIDC authentication failed! </p>";
+                $content['content'] .= '<p class="alert-danger"> OIDC authentication failed! </p>';
                 return $content;
             }
 
@@ -90,6 +90,8 @@ use Jumbojett\OpenIDConnectClient;
                 $redir = $RCMAIL->plugins->exec_hook('login_after', $query + array('_task' => 'mail'));
                 $RCMAIL->session->set_auth_cookie();
                 $OUTPUT->redirect($redir, 0, true);
+            } else {
+                $content['content'] .= '<p class="alert-danger"> IMAP authentication failed! </p>';
             }
 
             return $content;
