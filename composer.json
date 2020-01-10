@@ -3,7 +3,7 @@
     "type": "roundcube-plugin",
     "description": "OpenID Connect 1.0 login plugin for roundcube",
     "license": "MIT",
-    "version": "1.1.2",
+    "version": "1.2.2",
     "authors": [
         {
             "name": "Varun Patil",
