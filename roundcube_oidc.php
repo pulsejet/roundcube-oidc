@@ -24,14 +24,32 @@ use Jumbojett\OpenIDConnectClient;
             $this->add_hook('template_object_loginform', array($this, 'loginform'));
         }
 
+        function altReturn($ERROR) {
+            // Get mail object
+            $RCMAIL = rcmail::get_instance();
+
+            // Check if overridden login page
+            $altLogin = $RCMAIL->config->get('oidc_login_page');
+
+            // Include and exit
+            if (isset($altLogin) && !empty($altLogin)) {
+                include $altLogin;
+                exit;
+            }
+        }
+
         public function loginform($content) {
             // Add the login link
             $content['content'] .= "<p> <a href='?oidc=1'> Login with OIDC </a> </p>";
 
             // Check if we are starting or resuming oidc auth
             if (!isset($_GET['code']) && !isset($_GET['oidc'])) {
+                $this->altReturn(null);
                 return $content;
             }
+
+            // Define error for alt login
+            $ERROR = '';
 
             // Get mail object
             $RCMAIL = rcmail::get_instance();
@@ -52,7 +70,9 @@ use Jumbojett\OpenIDConnectClient;
                 $oidc->authenticate();
                 $user = json_decode(json_encode($oidc->requestUserInfo()), true);
             } catch (\Exception $e) {
-                $content['content'] .= '<p class="alert-danger"> OIDC authentication failed! </p>';
+                $ERROR = 'OIDC authentication failed!';
+                $content['content'] .= "<p class='alert-danger'> $ERROR </p>";
+                $this->altReturn($ERROR);
                 return $content;
             }
 
@@ -90,9 +110,11 @@ use Jumbojett\OpenIDConnectClient;
                 $RCMAIL->session->set_auth_cookie();
                 $OUTPUT->redirect($redir, 0, true);
             } else {
-                $content['content'] .= '<p class="alert-danger"> IMAP authentication failed! </p>';
+                $ERROR = 'IMAP authentication failed!';
+                $content['content'] .= "<p class='alert-danger'> $ERROR </p>";
             }
 
+            $this->altReturn($ERROR);
             return $content;
         }
 
