@@ -108,6 +108,14 @@ use Jumbojett\OpenIDConnectClient;
                 $OUTPUT = new rcmail_html_page();
                 $redir = $RCMAIL->plugins->exec_hook('login_after', $query + array('_task' => 'mail'));
                 $RCMAIL->session->set_auth_cookie();
+
+                // Update user profile
+                $iid = $RCMAIL->user->get_identity()['identity_id'];
+                $claim_name = $user['name'];
+                if (isset($iid) && isset($claim_name)) {
+                    $RCMAIL->user->update_identity($iid, array('name' => $claim_name));
+                }
+
                 $OUTPUT->redirect($redir, 0, true);
             } else {
                 $ERROR = 'IMAP authentication failed!';
