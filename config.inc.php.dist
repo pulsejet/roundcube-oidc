@@ -26,6 +26,9 @@ $config['oidc_client'] = 'gkroundcube';
 // Client secret corresponding to the given client ID
 $config['oidc_secret'] = 'round_secret';
 
+// OIDC scope
+$config['oidc_scope'] = 'openid';  
+
 // -------------- User Fields -----------------
 // Field for login UID. This may be an email ID
 $config['oidc_field_uid'] = 'mail';

@@ -65,6 +65,7 @@ use Jumbojett\OpenIDConnectClient;
                 $RCMAIL->config->get('oidc_client'),
                 $RCMAIL->config->get('oidc_secret')
             );
+            $oidc->addScope($RCMAIL->config->get('oidc_scope'));  
 
             // Get user information
             try {
