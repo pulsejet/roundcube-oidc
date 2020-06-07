@@ -20,7 +20,8 @@ use Jumbojett\OpenIDConnectClient;
         private $map;
     
         function init() {
-            $this->load_config();
+            $this->load_config('config.inc.php.dist');
+            $this->load_config('config.inc.php');
             $this->add_hook('template_object_loginform', array($this, 'loginform'));
         }
 
