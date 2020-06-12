@@ -72,7 +72,7 @@ use Jumbojett\OpenIDConnectClient;
                 $oidc->authenticate();
                 $user = json_decode(json_encode($oidc->requestUserInfo()), true);
             } catch (\Exception $e) {
-                $ERROR = 'OIDC authentication failed!';
+                $ERROR = 'OIDC Authentication Failed <br/>' . $e->getMessage();
                 $content['content'] .= "<p class='alert-danger'> $ERROR </p>";
                 $this->altReturn($ERROR);
                 return $content;
