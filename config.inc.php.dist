@@ -18,16 +18,16 @@ $config['oidc_config_master_user'] = '';
 
 // --------------- Provider ------------------
 // URL for OIDC
-$config['oidc_url'] = 'https://testsso.iitb.ac.in';
+$config['oidc_url'] = 'https://oidc.example.com';
 
 // Client ID already registered on the provider
-$config['oidc_client'] = 'gkroundcube';
+$config['oidc_client'] = 'client_id';
 
 // Client secret corresponding to the given client ID
-$config['oidc_secret'] = 'round_secret';
+$config['oidc_secret'] = 'my_secret';
 
 // OIDC scope
-$config['oidc_scope'] = 'openid';  
+$config['oidc_scope'] = 'openid';
 
 // -------------- User Fields -----------------
 // Field for login UID. This may be an email ID

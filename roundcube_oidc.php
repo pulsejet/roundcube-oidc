@@ -18,7 +18,7 @@ use Jumbojett\OpenIDConnectClient;
     {
         public $task = 'login|logout';
         private $map;
-    
+
         function init() {
             $this->load_config('config.inc.php.dist');
             $this->load_config('config.inc.php');
@@ -65,7 +65,7 @@ use Jumbojett\OpenIDConnectClient;
                 $RCMAIL->config->get('oidc_client'),
                 $RCMAIL->config->get('oidc_secret')
             );
-            $oidc->addScope($RCMAIL->config->get('oidc_scope'));  
+            $oidc->addScope($RCMAIL->config->get('oidc_scope'));
 
             // Get user information
             try {
