@@ -98,7 +98,7 @@ use Jumbojett\OpenIDConnectClient;
             ));
 
             // Login to IMAP
-            if ($RCMAIL->login($uid, $password, $imap_server, $auth['cookiecheck'])) {
+            if ($RCMAIL->login($auth['user'], $password, $imap_server, $auth['cookiecheck'])) {
                 $RCMAIL->session->remove('temp');
                 $RCMAIL->session->regenerate_id(false);
                 $RCMAIL->session->set_auth_cookie();
